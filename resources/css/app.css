@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    h2{
+        @apply text-xl text-sky-600
+    }
+    p{
+        @apply text-gray-700
+    }
+    textarea{
+        @apply rounded-lg
+    }
+    main{
+        @apply md:bg-slate-400 h-[100%]
+    }
+   
+}
+@layer components{
+    /* input */
+    .input-search{
+        @apply h-10 rounded-xl mx-1 w-80;
+    }
+    .input-search:active{
+       @apply h-10 rounded-r mr-1 w-80 border-l-white;
+    }
+    /* end input */
+
+
+    /* card */
+    .card{
+        @apply bg-white overflow-hidden shadow-sm rounded-lg w-80 md:w-[50%] mx-auto shadow-xl p-6 /*md:mx-[10px]*/;
+        @apply border-sky-500  border-r border-b mt-4
+    }   
+    /* end card */
+
+
+    /* btn */
+    .btn-save{
+        @apply bg-slate-900 text-center text-white rounded py-2 px-1 w-28 mt-4
+    }
+    .btn-save:hover{
+        @apply bg-slate-800;
+    }
+    .btn-save:active{
+        @apply bg-slate-700 
+    }
+    .btn-edit{
+        @apply bg-blue-600 text-center text-white rounded py-2 px-1 w-28 mt-4
+    }
+    .btn-search{
+        @apply bg-blue-600 text-center text-white rounded-xl py-2 px-1 w-28
+    }
+    /* end btn */
+    /* list */
+    .lit{
+        @apply mx-auto p-8 justify-items-center
+    }
+    /* end list */
+    /* link */
+    .link{
+        @apply text-sky-500 m-4
+    }
+    /*end link */
+    .detail{
+        @apply text-justify mb-3
+    }
+    .btn-danger{
+        @apply bg-red-600 text-center text-white rounded py-2 px-1 w-28 mt-4 hover:bg-red-500
+    }
+    .btn-more{
+        @apply border-sky-800 text-sky-800 border-[1px] rounded px-2;
+    }
+    .input-select{
+        @apply block w-full rounded border-gray-500 hover:border-sky-600;
+    }
+    .alert-success{
+        @apply p-2 mt-4 mx-auto bg-green-400  text-gray-800 text-center rounded-lg border-solid border-green-900 border-spacing-1 border-2 w-80 md:w-[50%] animate-bounce;
+    }
+    .alert-danger{
+        @apply p-2 mt-4 mx-auto bg-red-300  text-gray-800 text-center rounded-lg border-solid border-red-900 border-spacing-1 border-2 w-80 md:w-[50%] animate-bounce;
+    }
+    .active-link{
+        @apply inline-flex items-center px-1 pt-1 border-2 border-white text-sm font-medium leading-5 text-white  transition duration-150 ease-in-out bg-indigo-500 w-[132px] text-center justify-center
+    }
+    .active-link:focus{
+        @apply outline-none border-white
+    }
+}
