@@ -13,6 +13,83 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+.carousel {
+    padding: 20px;
+    perspective: 500px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carousel > * {
+    flex: 0 0 auto;
+}
+.carousel figure {
+    margin: 0;
+    width: 400px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    transform-origin: 50% 50% -482.8427124746px;
+}
+.carousel figure img {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 40px;
+    opacity: 0.9;
+}
+.carousel figure img:not(:first-of-type) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 50% 50% -482.8427124746px;
+}
+.carousel figure img:nth-child(2) {
+    transform: rotateY(0.7853981634rad);
+}
+.carousel figure img:nth-child(3) {
+    transform: rotateY(1.5707963268rad);
+}
+.carousel figure img:nth-child(4) {
+    transform: rotateY(2.3561944902rad);
+}
+.carousel figure img:nth-child(5) {
+    transform: rotateY(3.1415926536rad);
+}
+.carousel figure img:nth-child(6) {
+    transform: rotateY(3.926990817rad);
+}
+.carousel figure img:nth-child(7) {
+    transform: rotateY(4.7123889804rad);
+}
+.carousel figure img:nth-child(8) {
+    transform: rotateY(5.4977871438rad);
+}
+.carousel nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+}
+.carousel nav button {
+    flex: 0 0 auto;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #333;
+    background: none;
+    border: 1px solid;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+}
+    </style>
 </head>
 
 <body class="font-sans antialiased" onload="f()">
@@ -33,7 +110,25 @@
                 @endauth
             </div>
         @endif
-
+            {{-- carouselle --}}
+        <div>
+            <div class="carousel">
+                <figure>
+                    <img src="https://source.unsplash.com/EbuaKnSm8Zw/800x533" alt="">
+                    <img src="https://source.unsplash.com/kG38b7CFzTY/800x533" alt="">
+                    <img src="https://source.unsplash.com/nvzvOPQW0gc/800x533" alt="">
+                    <img src="https://source.unsplash.com/2lYHiNtjSwg/800x533" alt="">
+                    <img src="https://source.unsplash.com/CjS3QsRuxnE/800x533" alt="">
+                    <img src="https://source.unsplash.com/xxeAftHHq6E/800x533" alt="">
+                    <img src="https://source.unsplash.com/bjhrzvzZeq4/800x533" alt="">
+                    <img src="https://source.unsplash.com/7mUXaBBrhoA/800x533" alt="">
+                </figure>
+                <nav>
+                    <button class="nav prev">Prev</button>
+                    <button class="nav next">Next</button>
+                </nav>
+            </div>
+        </div>
         {{-- detail en carte --}}
         <div class="block sm:flex md:grid-cols-3 ">
             <div class=" block mx-auto md:flex md:mx-[10px] row">
@@ -65,5 +160,33 @@
         </div>
     </div>
 </body>
+<script>
+    var
+	carousel = document.querySelector('.carousel'),
+	figure = carousel.querySelector('figure'),
+	nav = carousel.querySelector('nav'),
+	numImages = figure.childElementCount,
+	theta =  2 * Math.PI / numImages,
+	currImage = 0
+;
+	
+nav.addEventListener('click', onClick, true);
 
+function onClick(e) {
+	e.stopPropagation();
+	
+	var t = e.target;
+	if (t.tagName.toUpperCase() != 'BUTTON')
+		return;
+	
+	if (t.classList.contains('next')) {
+		currImage++;
+	}
+	else {
+		currImage--;
+	}
+	
+	figure.style.transform = `rotateY(${currImage * -theta}rad)`;
+}
+</script>
 </html>
