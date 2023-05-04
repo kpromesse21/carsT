@@ -112,7 +112,7 @@
         @endif
             {{-- carouselle --}}
         <div>
-            <div class="carousel">
+            <div class="carousel" style="margin-top: 50px">
                 <figure>
                     <img src="https://source.unsplash.com/EbuaKnSm8Zw/800x533" alt="">
                     <img src="https://source.unsplash.com/kG38b7CFzTY/800x533" alt="">
@@ -131,7 +131,7 @@
         </div>
         {{-- detail en carte --}}
         <div class="block sm:flex md:grid-cols-3 ">
-            <div class=" block mx-auto md:flex md:mx-[10px] row">
+            <div class=" block mx-auto md:flex md:mx-[10px] row space-x-4">
             <div class="card grid-cols-2">
                 <img src="" alt="" srcset="">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente iusto aspernatur nihil magni
