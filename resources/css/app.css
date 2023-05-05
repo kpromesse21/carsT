@@ -87,6 +87,9 @@
     .active-link:focus{
         @apply outline-none border-white
     }
+    .menu-welcome{
+        @apply bg-slate-500 w-full
+    }
 }
 
 
