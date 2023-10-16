@@ -11,6 +11,7 @@
                 <div class="card">
                     <div class="p-6 text-gray-900">
                         <h2 class="mx-auto">Fomulaire d'ajout de vehicule</h2><br>
+        
                         <form action="{{ route('register.confirm') }}" method="post"class="mx-auto">
                             @csrf
                             <label for="matricule">matricule</label>
@@ -20,6 +21,11 @@
                             <label for="num_carte_proprietaire">Numero de carte du proprietaire</label>
                             <x-text-input class="block mt-1 w-full" type="text" name="num_carte_proprietaire" required />
                             <label for="num_carte_grise">mail du proprietaire</label>
+                            @if ($alert)
+                                <div class="alert-danger">
+                                    <p>{{$alert}}</p>
+                                </div>
+                            @endif
                             <x-text-input class="block mt-1 w-full" type="email" name="mail" required />
                             <label for="categorie">Categorie</label>
                             <select name="categorie" id="" class="w-full rounded">

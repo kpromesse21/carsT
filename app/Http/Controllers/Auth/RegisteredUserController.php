@@ -45,6 +45,7 @@ class RegisteredUserController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'statut'=>1,
+                'img'=>'',
             ]);
             
             event(new Registered($user));
@@ -58,6 +59,7 @@ class RegisteredUserController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'statut'=>4,
+                'img'=>''
             ]);
             
             event(new Registered($user));

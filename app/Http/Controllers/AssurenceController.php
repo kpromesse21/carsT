@@ -26,6 +26,7 @@ class AssurenceController extends Controller
     public function create()
     {
         //
+        return view('');
     }
 
     /**

@@ -14,15 +14,21 @@ class CarController extends Controller
         return view('formAddCar');
     }
     public function registerConfirm(Request $request){
-        $id_user=User::where('email',$request->mail)->first()->id;
-        Cars::create([
-            'matricule'=>$request->matricule,
-            'num_carte_grise'=>$request->num_carte_grise,
-            'num_carte_proprietaire'=>$request->num_carte_proprietaire,
-            "categorie"=>$request->categorie,
-            "mark"=>$request->mark,
-            "id_user"=>$id_user,
-        ]);
-        return view('formAddCar');
+        if(User::where('email',$request->mail)->first()){
+            $id_user=User::where('email',$request->mail)->first()->id;
+            Cars::create([
+                'matricule'=>$request->matricule,
+                'num_carte_grise'=>$request->num_carte_grise,
+                'num_carte_proprietaire'=>$request->num_carte_proprietaire,
+                "categorie"=>$request->categorie,
+                "mark"=>$request->mark,
+                "id_user"=>$id_user,
+            ]);
+            return view('formAddCar');
+        }else{
+            $alert='aucun utilisateur ne corespond à cet email';
+            return view('formAddCar',compact('alert'));
+        }
+        
     }
 }
