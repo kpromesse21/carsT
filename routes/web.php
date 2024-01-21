@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     //Route::put('/assurence/editer','App\Http\Controllers\AssurenceController@update')->name('assurence.update')->middleware(['agent_dgi']);
     
     //agent PCR
-    Route::resource('contravention','App\Http\Controllers\ContraventionController');
+    Route::resource('/contravention','App\Http\Controllers\ContraventionController');
     
 
 

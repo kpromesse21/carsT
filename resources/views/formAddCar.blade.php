@@ -21,11 +21,16 @@
                             <label for="num_carte_proprietaire">Numero de carte du proprietaire</label>
                             <x-text-input class="block mt-1 w-full" type="text" name="num_carte_proprietaire" required />
                             <label for="num_carte_grise">mail du proprietaire</label>
-                            @if ($alert)
+                            {{-- @if ($alert)
                                 <div class="alert-danger">
                                     <p>{{$alert}}</p>
                                 </div>
-                            @endif
+                            @endif --}}
+                            @isset($alert)
+                            <div class="alert-danger">
+                                <p>{{$alert}}</p>
+                            </div>
+                            @endisset
                             <x-text-input class="block mt-1 w-full" type="email" name="mail" required />
                             <label for="categorie">Categorie</label>
                             <select name="categorie" id="" class="w-full rounded">

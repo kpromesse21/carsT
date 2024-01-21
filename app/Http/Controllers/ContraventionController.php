@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cars;
 use Illuminate\Http\Request;
 
+use function Termwind\render;
+
 class ContraventionController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class ContraventionController extends Controller
      */
     public function index()
     {
-        
+        return view('contravention');
     }
 
     /**
