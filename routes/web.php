@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     
     //agent PCR
     Route::resource('/contravention','App\Http\Controllers\ContraventionController');
+    // Route::resource('/contravention','App\Http\Controllers\ContraventionController');
     
 
 
