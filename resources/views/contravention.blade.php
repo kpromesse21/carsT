@@ -3,27 +3,31 @@
         {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Controle du vehicule '.$car->matricule) }}
         </h2> --}}
-      
-    </x-slot> 
-     <div class="py-12">
-            <div class="card">
-                <form action="">
-                    <label>
-                        Degre de faute
-                    </label>
-                    <x-text-input class="block mt-1 w-full" type="number" name="mail" placeholder="ex: 6/10" required />
-                    <label for="">Motif de la contravention</label>
-                    <select name="" id="" class="input-select">
-                        <option value="">mauvais parking</option>
-                        <option value="">mauvaise conduite</option>
-                        <option value="">pas d'assurence</option>
-                        <option value="">griller un feu rouge</option>
-                        <option value="">causer un accident</option>
-                        <option value="">manque de document</option>
-                        <option value="">retard de payement des contraventions</option>
-                    </select>
-                    <button type="submit" class="btn-save">enregistrer</button> <a href="" class="btn-danger">annuler</a>
-                </form>
-            </div>
+
+    </x-slot>
+    <div class="py-12">
+        <div class="card">
+            <form action="{{ route('contravation.store') }}" method="POST">
+                @csrf
+                <label>
+                    numero de plaque
+                </label>
+                <x-text-input class="block mt-1 w-full" type="text" name="plaque_num" placeholder="AA-XXXXXXXXX"
+                    required />
+                {{-- <x-text-input class="block mt-1 w-full" type="number" name="mail" placeholder="ex: 6/10" required /> --}}
+                <label for="">Motif de la contravention</label>
+                <select name="motif" id="" class="input-select">
+                    <option value="0">mauvais parking</option>
+                    <option value="1">mauvaise conduite</option>
+                    <option value="2">pas d'assurence</option>
+                    <option value="3">griller un feu rouge</option>
+                    <option value="4">causer un accident</option>
+                    <option value="5">manque de document</option>
+                    <option value="6">retard de payement des contraventions</option>
+                </select>
+                <button type="submit" class="btn-save">enregistrer</button> <a href=""
+                    class="btn-danger">annuler</a>
+            </form>
         </div>
+    </div>
 </x-app-layout>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Assurences;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContraventionController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -59,6 +60,7 @@ Route::middleware('auth')->group(function () {
     
     //agent PCR
     Route::resource('/contravention','App\Http\Controllers\ContraventionController');
+    Route::post('/contravation_store',[ContraventionController::class,'store'])->name('contravation.store');
     // Route::resource('/contravention','App\Http\Controllers\ContraventionController');
     
 

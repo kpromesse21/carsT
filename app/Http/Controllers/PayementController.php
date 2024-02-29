@@ -48,6 +48,7 @@ class PayementController extends Controller
         }else{
 
             $car=Cars::where('matricule',$request->matricule)->get()->first();
+            // dd($car);
            if($car==null){
             $erros="ce matricule n'existe pas dans le systeme";
             $assurences=Assurence::all();
@@ -55,10 +56,16 @@ class PayementController extends Controller
            }else{
              $cars_id=$car->id;
             $assurence=$request->assurence;
-            Payement::create([
-                'cars_id'=>$cars_id,
-                'assurences_id'=>$assurence,
-            ]);
+            // dd($cars_id,$assurence);
+            // Payement::create([
+            //     'car_id'=>$cars_id,
+            //     'assurence_id'=>$assurence,
+            // ]);
+            $payement=new Payement();
+            $payement->car_id=$cars_id;
+            $payement->assurence_id=(int)$assurence;
+            // dd($payement);
+            $payement->save();
             $assurences=Assurence::all();
             $log="payement effectué  avec success";
             return view('payement',compact('assurences','log'));

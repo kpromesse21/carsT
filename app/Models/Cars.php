@@ -13,7 +13,7 @@ class Cars extends Model
     protected $fillable=[
         "matricule",
         "num_carte_grise",
-        "num_carte_proprietaire",
+        "num_carte_propietaire",
         "mark",
         "categorie",
         "id_user",

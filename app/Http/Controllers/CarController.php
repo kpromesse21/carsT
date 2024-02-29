@@ -19,10 +19,10 @@ class CarController extends Controller
             Cars::create([
                 'matricule'=>$request->matricule,
                 'num_carte_grise'=>$request->num_carte_grise,
-                'num_carte_proprietaire'=>$request->num_carte_proprietaire,
+                'num_carte_propietaire'=>$request->num_carte_proprietaire,
                 "categorie"=>$request->categorie,
                 "mark"=>$request->mark,
-                "id_user"=>$id_user,
+                "user_id"=>$id_user,
             ]);
             return view('formAddCar');
         }else{

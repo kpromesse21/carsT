@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('contraventions', function (Blueprint $table) {
-            $table->unsignedBigInteger('car_id');
-            $table->foreign('car_id')->references('id')->on('cars');
+        Schema::table('cars', function (Blueprint $table) {
+            //
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            // $table->foreign('id_users')->references('id')->on('users');
         });
     }
 
@@ -26,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('contraventions', function (Blueprint $table) {
+        Schema::table('cars', function (Blueprint $table) {
             //
         });
     }

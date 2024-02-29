@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('payements', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('car_id');
-            $table->unsignedBigInteger('assurence_id');
+            $table->unsignedBigInteger('car_id')->nullable();
+            $table->unsignedBigInteger('assurence_id')->nullable();
             $table->foreign('car_id')->references('id')->on('cars');
             $table->foreign('assurence_id')->references('id')->on('assurences');
 
