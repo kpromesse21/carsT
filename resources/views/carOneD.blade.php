@@ -17,8 +17,8 @@
         <h2>Payements</h2>
         @forelse ($car->payements as $item) 
         <hr>
-        <?php $assurence=App\Models\Assurence::find($item->assurences_id)?>
-        <span>Nom de l'assurence : {{$assurence->name}}</span><br>
+        {{-- <?php $assurence=App\Models\Assurence::find($item->assurence_id)?> --}}
+        <span>Nom de l'assurence : {{$item->assurences->name}}</span><br>
         <span>Payer le {{$item->created_at->format('d-m-y')}}</span><br>
         
         @empty

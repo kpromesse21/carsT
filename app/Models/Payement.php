@@ -11,12 +11,12 @@ class Payement extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'cars_id','assurences_id',
+        'car_id','assurence_id',
     ];
     public function car(){
-        return $this->belongsTo(Cars::class);
+        return $this->belongsTo(Cars::class,'cars_id','id');
     }
-    public function assurence(){
-        return $this->belongsTo(Assurence::class);
+    public function assurences(){
+        return $this->belongsTo(Assurence::class,'assurences_id','id');
     }
 }

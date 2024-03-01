@@ -51,6 +51,7 @@ class Car extends Controller
     {   
         
         $car=Cars::find($id);
+        dd($car);
         if ($car->id_user == Auth::user()->id) {
             return view('carOne',compact('car'));
         }else{
@@ -61,6 +62,7 @@ class Car extends Controller
     {   
         
         $car=Cars::find($id);
+        // dd($car->payements);
             return view('carOneD',compact('car'));
     }
 

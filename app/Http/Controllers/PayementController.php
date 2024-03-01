@@ -62,8 +62,8 @@ class PayementController extends Controller
             //     'assurence_id'=>$assurence,
             // ]);
             $payement=new Payement();
-            $payement->car_id=$cars_id;
-            $payement->assurence_id=(int)$assurence;
+            $payement->cars_id=$cars_id;
+            $payement->assurences_id=(int)$assurence;
             // dd($payement);
             $payement->save();
             $assurences=Assurence::all();
