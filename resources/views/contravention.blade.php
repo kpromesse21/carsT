@@ -19,8 +19,8 @@
                 <select name="motif" id="" class="input-select">
                     <option value="0">mauvais parking</option>
                     <option value="1">mauvaise conduite</option>
-                    <option value="2">pas d'assurence</option>
-                    <option value="3">griller un feu rouge</option>
+                    <option value="2">griller un feu rouge</option>
+                    <option value="3">pas d'assurence</option>
                     <option value="4">causer un accident</option>
                     <option value="5">manque de document</option>
                     <option value="6">retard de payement des contraventions</option>

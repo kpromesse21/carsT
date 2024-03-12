@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cars;
+use App\Models\Contraventions;
 use Illuminate\Http\Request;
 
 use function Termwind\render;
@@ -14,8 +15,9 @@ class ContraventionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
+        dd($request);
         return view('contravention');
     }
 
@@ -38,7 +40,28 @@ class ContraventionController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        // dd($request);
+        $fautes=[
+            '0'=>[10000,'mauvais parking'],
+            '1'=>[20000,'mauvaise conduite'],
+            '2'=>[10500,'griller un feu rouge'],
+            '3'=>[25000,"pas d'assurence"],
+            '4'=>[30000,"causer un accident"],
+            '5'=>[17000,"manque de document"],
+            '6'=>[21000,"contraventions impayer"],
+        ];
+        $contravention=new Contraventions();
+        $car=Cars::where('matricule',$request->plaque_num)->get();
+        // $car=Cars::found('matricule',$request->plaque_num);
+        // dd($car);
+        $contravention->motif=$request->motif;
+        $contravention->car_id=$car[0]->id;
+        $contravention->montant=$fautes[$request->motif][0];
+
+        // dd($contravention);
+        $contravention->save();
+        return redirect(route('contravention.index'));
+
     }
 
     /**

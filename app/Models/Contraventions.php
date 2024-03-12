@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Contraventions extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'motif',
+        'montant',
+        'car_id',
+    ];
 }
