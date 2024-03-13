@@ -52,6 +52,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/enregistrement-voiture/confirm', [CarController::class, 'registerConfirm'])->name('register.confirm')->middleware(['agent_dgi']);
     Route::resource('/assurence','App\Http\Controllers\AssurenceController')->except('show')->middleware(['agent_dgi']);
     Route::get('/assurence/{assurence}','App\Http\Controllers\AssurenceController@show')->name('assurence.show');
+    Route::get('/gestion-vehicule/{car}',[CarController::class,'show'])->name('car.show');
+    Route::get('/gestion-vehicule-edit/{car}',[CarController::class,'edit'])->name('car.edit');
+    Route::post('/gestion-vehicule-edit/{car}',[CarController::class,'edit'])->name('car.edit');
+
+    
+
 
     Route::post('/assurence/enregistrement','App\Http\Controllers\AssurenceController@store')->name('assurence.store')->middleware(['agent_dgi']);
     Route::delete('/assurence/suppression','App\Http\Controllers\AssurenceController@destroy')->name('assurence.destroy')->middleware(['agent_dgi']);

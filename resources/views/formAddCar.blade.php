@@ -49,6 +49,19 @@
                         </form>
                     </div>
                 </div>
+                <di class="card  block ">
+                    <h2 class="text-center">voiture enregistre</h2>
+                    <ul class="mx-auto">
+                        <li class="flex gap-[20px]"><h3>matricule</h3> <h3>actions</h3></li>
+                        @foreach ($cars as $item)
+                         <li class="flex gap-[20px]">
+                            <h3>{{$item->matricule}}</h3>
+                            <a href="{{route('car.show',$item->id)}}" class=" text-blue-500">plus</a>
+                        </li>
+                    @endforeach
+                       
+                    </ul>
+                </di>
             </div>
         </div>
     </div>

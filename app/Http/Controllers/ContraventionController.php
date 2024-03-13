@@ -15,9 +15,9 @@ class ContraventionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($request)
+    public function index()
     {
-        dd($request);
+        // dd($request);
         return view('contravention');
     }
 
@@ -84,7 +84,7 @@ class ContraventionController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**

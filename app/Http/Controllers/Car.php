@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Assurence;
 use App\Models\Cars;
+use App\Models\Contraventions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,7 +64,13 @@ class Car extends Controller
         
         $car=Cars::find($id);
         // dd($car->payements);
-            return view('carOneD',compact('car'));
+        $contraventions=Contraventions::where('car_id',$id)->get();
+        // dd($contraventions);
+            return view('carOneD',[
+                'car'=>$car,
+                'contraventions'=>$contraventions
+
+            ]);
     }
 
     /**

@@ -7,13 +7,17 @@
         @apply text-xl text-sky-600
     }
     p{
-        @apply text-gray-700
+        @apply text-gray-300
     }
     textarea{
         @apply rounded-lg
     }
     main{
-        @apply md:bg-slate-400 h-[100%]
+        @apply md:bg-slate-900 h-[100%]
+    }
+
+    body{
+        @apply bg-slate-900
     }
    
 }
@@ -90,6 +94,14 @@
     .menu-welcome{
         @apply bg-slate-500 w-full
     }
+    body , html{
+    @apply bg-slate-900
+}
+}
+html body{
+    background-color: rgba(10, 10, 16, 0.881);
+    width: 100vw;
+    height: 100vh;
 }
 
 
