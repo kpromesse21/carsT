@@ -18,5 +18,16 @@
         @empty
         <h1 class="text-xl text-red-800 mx-auto bg-red-400 text-center rounded-b  ">| Aucun payement effectuer |</h1>
         @endforelse
+
+        <h2>contravation</h2>
+        @forelse ($contraventions as $item) 
+        <hr>
+        <?php $assurence=App\Models\Contraventions::find($item->id)?>
+        <span>motif : {{$item->motif}}</span><br>
+        <span>effectuer le: {{$item->created_at->format('d-m-y')}}</span><br>
+        
+        @empty
+            <h1 class="text-xl text-red-800 mx-auto bg-red-400 text-center rounded-b">| Aucun payement effectuer |</h1>
+        @endforelse
     </div>
 </x-app-layout>

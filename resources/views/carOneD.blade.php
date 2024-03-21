@@ -12,7 +12,10 @@
         @if (Auth::user()->statut=== 3)
         <div class="mt-2"> <a href="{{route('contravention.show',['contravention'=>$car->id])}}" class="btn-danger ">ajouter une contravention</a></div>    
         @endif
-        
+
+           @if (Auth::user()->statut=== 2)
+           <div class="mt-2"> <a href="{{route('car.edit',['car'=>$car->id])}}" class="btn-danger ">editer</a></div>    
+           @endif
        
         <h2>Payements</h2>
         @forelse ($car->payements as $item) 

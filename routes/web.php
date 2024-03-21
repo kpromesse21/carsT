@@ -54,19 +54,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/assurence/{assurence}','App\Http\Controllers\AssurenceController@show')->name('assurence.show');
     Route::get('/gestion-vehicule/{car}',[CarController::class,'show'])->name('car.show');
     Route::get('/gestion-vehicule-edit/{car}',[CarController::class,'edit'])->name('car.edit');
-    Route::post('/gestion-vehicule-edit/{car}',[CarController::class,'edit'])->name('car.edit');
+    Route::post('/gestion-vehicule-update',[CarController::class,'update'])->name('car.update');
+    Route::post('/gestion-vehicule-search',[CarController::class,'rechercher'])->name('car.recherche');
+    Route::post('/gestion-vehicule-proprio',[CarController::class,'ajout_proprio'])->name('car.proprio');
+
 
     
 
+    Route::middleware(["agent_dgi"])->group(function(){
+        Route::post('/assurence/enregistrement','App\Http\Controllers\AssurenceController@store')->name('assurence.store');
+        Route::delete('/assurence/suppression','App\Http\Controllers\AssurenceController@destroy')->name('assurence.destroy');
+        Route::resource('/payement','App\Http\Controllers\PayementController');
+    });
 
-    Route::post('/assurence/enregistrement','App\Http\Controllers\AssurenceController@store')->name('assurence.store')->middleware(['agent_dgi']);
-    Route::delete('/assurence/suppression','App\Http\Controllers\AssurenceController@destroy')->name('assurence.destroy')->middleware(['agent_dgi']);
-    Route::resource('/payement','App\Http\Controllers\PayementController')->middleware(['agent_dgi']);
     //Route::put('/assurence/editer','App\Http\Controllers\AssurenceController@update')->name('assurence.update')->middleware(['agent_dgi']);
     
     //agent PCR
-    Route::resource('/contravention','App\Http\Controllers\ContraventionController');
-    Route::post('/contravation_store',[ContraventionController::class,'store'])->name('contravation.store');
+     Route::middleware(['agent_pcr'])->group(function (){
+        Route::resource('/contravention','App\Http\Controllers\ContraventionController');
+        Route::post('/contravation_store',[ContraventionController::class,'store'])->name('contravation.store');
+    });
+
     // Route::resource('/contravention','App\Http\Controllers\ContraventionController');
     
 
@@ -75,6 +83,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('/vehicule','App\Http\Controllers\Car');
+    // Route::get("/car/edition/{car}",[Car::class,'edit'])->name("car.edit");
     Route::get('/vehicule/traquer/{vehicule}','App\Http\Controllers\Car@show1')->name('vehicule.show1');
 });
 

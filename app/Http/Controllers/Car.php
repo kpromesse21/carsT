@@ -17,7 +17,7 @@ class Car extends Controller
      */
     public function index()
     {
-        $cars=Cars::where('id_user',Auth::user()->id)->get();
+        $cars=Cars::where('user_id',Auth::user()->id)->get();
         return view('cars',compact('cars'));
     }
 
@@ -52,9 +52,10 @@ class Car extends Controller
     {   
         
         $car=Cars::find($id);
-        dd($car);
-        if ($car->id_user == Auth::user()->id) {
-            return view('carOne',compact('car'));
+        $contraventions=Contraventions::where('car_id',$id)->get();
+        // dd($car);
+        if ($car->user_id == Auth::user()->id) {
+            return view('carOne',['car'=>$car,'contraventions'=>$contraventions]);
         }else{
             abort(403);
         }
@@ -82,6 +83,10 @@ class Car extends Controller
     public function edit($id)
     {
         //
+        $car=Cars::find($id);
+        dd($car);
+        return view("");
+        
     }
 
     /**
