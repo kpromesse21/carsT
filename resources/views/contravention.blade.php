@@ -7,6 +7,11 @@
     </x-slot>
     <div class="py-12">
         <div class="card">
+            @isset($alert)
+            <div class="alert-danger">
+                <p>{{$alert}}</p>
+            </div>
+            @endisset
             <form action="{{ route('contravation.store') }}" method="POST">
                 @csrf
                 <label>
@@ -25,8 +30,8 @@
                     <option value="5">manque de document</option>
                     <option value="6">retard de payement des contraventions</option>
                 </select>
-                <button type="submit" class="btn-save">enregistrer</button> <a href=""
-                    class="btn-danger">annuler</a>
+                <button type="submit" class="btn-save">enregistrer</button> <a href="/"
+                    class="btn-danger">dashboard</a>
             </form>
         </div>
     </div>

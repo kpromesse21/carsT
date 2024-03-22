@@ -17,7 +17,6 @@ class ContraventionController extends Controller
      */
     public function index()
     {
-        // dd($request);
         return view('contravention');
     }
 
@@ -39,8 +38,6 @@ class ContraventionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($request);
         $fautes=[
             '0'=>[10000,'mauvais parking'],
             '1'=>[20000,'mauvaise conduite'],
@@ -52,16 +49,15 @@ class ContraventionController extends Controller
         ];
         $contravention=new Contraventions();
         $car=Cars::where('matricule',$request->plaque_num)->get();
-        // $car=Cars::found('matricule',$request->plaque_num);
-        // dd($car);
-        $contravention->motif=$request->motif;
-        $contravention->car_id=$car[0]->id;
-        $contravention->montant=$fautes[$request->motif][0];
-
-        // dd($contravention);
-        $contravention->save();
-        return redirect(route('contravention.index'));
-
+        if($car->count()<1){
+            return view('contravention',["alert"=>"ce matricule n'exste pas dans le system"]);
+        }else{
+             $contravention->motif=$request->motif;
+             $contravention->car_id=$car[0]->id;
+             $contravention->montant=$fautes[$request->motif][0];
+             $contravention->save();
+        return view('contravention',['alert'=>"contravention enregistrer avec success"]);
+        }
     }
 
     /**

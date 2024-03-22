@@ -38,33 +38,23 @@ class PayementController extends Controller
      */
     public function store(Request $request)
     {
-        
-
         if($request->assurence==null || $request->matricule==null){
             $erros="veillez remplire tout les champs SVP";
             $assurences=Assurence::all();
             return view('payement',compact('assurences','erros'));
-           // return view('payement',compact('erros'));
         }else{
 
             $car=Cars::where('matricule',$request->matricule)->get()->first();
-            // dd($car);
            if($car==null){
             $erros="ce matricule n'existe pas dans le systeme";
             $assurences=Assurence::all();
             return view('payement',compact('assurences','erros'));
            }else{
-             $cars_id=$car->id;
+            $cars_id=$car->id;
             $assurence=$request->assurence;
-            // dd($cars_id,$assurence);
-            // Payement::create([
-            //     'car_id'=>$cars_id,
-            //     'assurence_id'=>$assurence,
-            // ]);
             $payement=new Payement();
             $payement->cars_id=$cars_id;
             $payement->assurences_id=(int)$assurence;
-            // dd($payement);
             $payement->save();
             $assurences=Assurence::all();
             $log="payement effectué  avec success";
@@ -73,7 +63,12 @@ class PayementController extends Controller
            
         }
     }
-
+    public function payement_contravention_index(){
+        return view('payement.contravention'); 
+    }
+    public function payement_contravention_search(){
+        return view('payement.contravention'); 
+    }
     /**
      * Display the specified resource.
      *
