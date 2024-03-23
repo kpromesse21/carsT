@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/contravention','App\Http\Controllers\ContraventionController');
         Route::post('/contravation_store',[ContraventionController::class,'store'])->name('contravation.store');
         Route::get('payement-contravention/',[PayementController::class,"payement_contravention_index"]);
+        Route::post('payement-contravention-select/',[PayementController::class,"payement_contravention_select"])->name('contravention.payement.select');
     });
 
     // Route::resource('/contravention','App\Http\Controllers\ContraventionController');

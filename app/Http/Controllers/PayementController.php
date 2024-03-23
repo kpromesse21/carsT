@@ -66,8 +66,11 @@ class PayementController extends Controller
     public function payement_contravention_index(){
         return view('payement.contravention'); 
     }
-    public function payement_contravention_search(){
-        return view('payement.contravention'); 
+    public function payement_contravention_select(Request $request){
+        // dd($request);
+        $cars=Cars::where('matricule','like',"%%".$request->plaque_num."%%")->get();
+        // dd($cars);
+        return view('payement.contravention',['cars'=>$cars]); 
     }
     /**
      * Display the specified resource.

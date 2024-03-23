@@ -13,27 +13,36 @@
             </div>
             @endisset
             <h1>payement des contravention</h1>
-            <form action="{{ route('contravation.store') }}" method="POST">
+            <form action="{{ route('contravention.payement.select') }}" method="POST">
                 @csrf
                 <label>
                     numero de plaque
                 </label>
                 <x-text-input class="block mt-1 w-full" type="text" name="plaque_num" placeholder="AA-XXXXXXXXX"
                     required />
-                {{-- <x-text-input class="block mt-1 w-full" type="number" name="mail" placeholder="ex: 6/10" required /> --}}
-                <label for="">Motif de la contravention</label>
-                <select name="motif" id="" class="input-select">
-                    <option value="0">mauvais parking</option>
-                    <option value="1">mauvaise conduite</option>
-                    <option value="2">griller un feu rouge</option>
-                    <option value="3">pas d'assurence</option>
-                    <option value="4">causer un accident</option>
-                    <option value="5">manque de document</option>
-                    <option value="6">retard de payement des contraventions</option>
-                </select>
-                <button type="submit" class="btn-save">enregistrer</button> <a href="/"
-                    class="btn-danger">dashboard</a>
+                <button type="submit" class="btn-save">rechercher</button>
             </form>
+            @isset($cars)
+                   <table>
+                <thead>
+                    <th>Matricule</th>
+                    <th>Mark</th>
+                    <th>Proprietaire</th>
+                    <th>Nombre de contravention</th>
+                    <th>Action</th>
+                </thead>
+                @foreach ($cars as $item)
+                    <tr>
+                        <td>{{$item->matricule}}</td>
+                        <td>{{$item->mark}}</td>
+                        <td>{{"proprietaire"}}</td>
+                        <td>{{App\Models\Contraventions::where('car_id',$item->id)->get()->count()}}</td>
+                        <td> <form action="{{route("contravention.payement.payer")}}" method="post"><input type="hidden" name="id"> <button type="submit">Payer</button></form> </td>
+                    </tr>
+                @endforeach
+            </table>
+            @endisset
+         
         </div>
     </div>
 </x-app-layout>
