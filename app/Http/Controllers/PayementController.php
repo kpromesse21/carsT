@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cars;
 use App\Models\Payement;
 use App\Models\Assurence;
+use App\Models\Contraventions;
 use Illuminate\Http\Request;
 
 class PayementController extends Controller
@@ -70,7 +71,27 @@ class PayementController extends Controller
         // dd($request);
         $cars=Cars::where('matricule','like',"%%".$request->plaque_num."%%")->get();
         // dd($cars);
+
         return view('payement.contravention',['cars'=>$cars]); 
+    }
+    public function payement_contravention_list(Cars $car ,$alert=null){
+        $contraventions=Contraventions::where('car_id',$car->id)->where('solve',false)->get();
+
+
+        if($alert){
+            return view('payement.contraventions',['contraventions'=>$contraventions,'matricule'=>$car->matricule,"alert"=>$alert]);
+        }
+        return view('payement.contraventions',['contraventions'=>$contraventions,'matricule'=>$car->matricule]);
+
+    }
+    public function payement_contravention_payer(Request $request){
+
+        // dd($request);
+        $contravention=Contraventions::find($request->id);
+        $contravention->solve=true;
+        $alert="Le payement de la contravention s'est effectuer avec success";
+        $contravention->save();
+        return view('payement.contravention',['alert'=>$alert]); 
     }
     /**
      * Display the specified resource.

@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     //agent DGI
     Route::middleware(["agent_dgi"])->group(function(){
         Route::post('/assurence/enregistrement','App\Http\Controllers\AssurenceController@store')->name('assurence.store');
-        Route::delete('/assurence/suppression','App\Http\Controllers\AssurenceController@destroy')->name('assurence.destroy');
+        Route::delete('/assurence/suppression/{assurence}','App\Http\Controllers\AssurenceController@destroy')->name('assurence.destroy');
         Route::resource('/payement','App\Http\Controllers\PayementController');
         Route::get('/enregistrement-voiture', [CarController::class, 'register'])->name('register.car');
         Route::get('/assurence/{assurence}','App\Http\Controllers\AssurenceController@show')->name('assurence.show');
@@ -62,7 +62,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/gestion-vehicule-proprio',[CarController::class,'ajout_proprio'])->name('car.proprio');
         Route::post('/enregistrement-voiture/confirm', [CarController::class, 'registerConfirm'])->name('register.confirm');
         Route::resource('/assurence','App\Http\Controllers\AssurenceController')->except('show');
-       
     });
 
     //Route::put('/assurence/editer','App\Http\Controllers\AssurenceController@update')->name('assurence.update')->middleware(['agent_dgi']);
@@ -71,8 +70,10 @@ Route::middleware('auth')->group(function () {
      Route::middleware(['agent_pcr'])->group(function (){
         Route::resource('/contravention','App\Http\Controllers\ContraventionController');
         Route::post('/contravation_store',[ContraventionController::class,'store'])->name('contravation.store');
-        Route::get('payement-contravention/',[PayementController::class,"payement_contravention_index"]);
+        Route::get('payement-contravention/',[PayementController::class,"payement_contravention_index"])->name("contravention.payement.index");
         Route::post('payement-contravention-select/',[PayementController::class,"payement_contravention_select"])->name('contravention.payement.select');
+        Route::get('payement-contravention-list/{car}',[PayementController::class,"payement_contravention_list"])->name('contravention.payement.list');
+        Route::post('payement-contravention-payer/',[PayementController::class,"payement_contravention_payer"])->name('contravention.payement.payer');
     });
 
     // Route::resource('/contravention','App\Http\Controllers\ContraventionController');

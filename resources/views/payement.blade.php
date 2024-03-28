@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('payement') }}
         </h2>
     </x-slot>
@@ -47,8 +47,8 @@
             }
         </script>
     @endif
-    <div class="py-12">
-        <div class="card">
+    <div class="panel">
+        <div class="card w-[50%] mx-auto">
         <h2>Payement assurence</h2>
         <form action="{{ route('payement.store') }}" method="POST">
             @csrf
@@ -56,7 +56,7 @@
             <x-text-input class="block mt-1 w-full" type="text" name="matricule" required />
             <label for="">
                 Assurence a payer </label>
-            <select name="assurence" id="" class="input-select" required>
+            <select name="assurence" id="" class="input-text" required>
                 <option class="text-gray-400" value="">Choisir une assurence...</option>
                 @foreach ($assurences as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>

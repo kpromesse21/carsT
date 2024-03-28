@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('gestion assurance') }}
         </h2>
 
     </x-slot>
-    <div class="px-12 py-12">
-        <div class="card ">
+    <div class="panel grid md:grid-cols-6">
+        <div class="card col-span-3 ">
             <h2>formulaire d'assurance</h2>
             <form action="{{route('assurence.store')}}" method="post">
                 @csrf
@@ -15,21 +15,31 @@
                 <x-input-label for="price" class="block mt-1 w-full">prix</x-input-label>
                 <x-text-input class="block mt-1 w-full" type="number" name="price" required />
                 <x-input-label for="description" class="block mt-1 w-full">description</x-input-label>
-                <textarea class="block mt-1 w-full " name="description">
+                <textarea class="input-text " name="description">
 
                 </textarea>
                 <button type="submit" class="btn-save">enregistrer</button>
             </form>
         </div>
-        <div class="card ">
+        <div class="card  col-span-3">
             <h2>liste de assurance</h2>
-
             @if ($assurences->count() > 0)
-                <ol class="list">
-                    @foreach ($assurences as $item)
-                       <li>{{$item->name}} <a class="link" href="{{route('assurence.show',['assurence'=>$item->id])}}">detail</a></li> 
-                    @endforeach
-                </ol>    
+            <div class="table">
+                <table>
+                <thead>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Action</th>
+                </thead>
+                @foreach ($assurences as $item)
+                <tr>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->price}} CDF</td>
+                    <td><a class="link" href="{{route('assurence.show',['assurence'=>$item->id])}}">detail</a></td>
+                </tr>
+                @endforeach
+            </table></div>
+           
             @else
                 <b>aucun contenue a lister</b>
             @endif

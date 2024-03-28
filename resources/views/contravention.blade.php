@@ -1,12 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{-- <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Controle du vehicule '.$car->matricule) }}
         </h2> --}}
 
     </x-slot>
-    <div class="py-12">
-        <div class="card">
+    {{-- <div class="py-12"> --}}
+        <div class="panel">
+            <div class="card mx-auto">
             @isset($alert)
             <div class="alert-danger">
                 <p>{{$alert}}</p>
@@ -34,5 +35,7 @@
                     class="btn-danger">dashboard</a>
             </form>
         </div>
-    </div>
+        </div>
+        
+    {{-- </div> --}}
 </x-app-layout>

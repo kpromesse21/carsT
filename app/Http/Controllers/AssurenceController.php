@@ -89,7 +89,7 @@ class AssurenceController extends Controller
         $assurence->price=$request->price;
         $assurence->description=$request->description;
         $assurence->save();
-        return redirect(route('assurence.show',['assurence'=>$id]));
+        return redirect()->route('assurence.show',['assurence'=>$id]);
     }
 
     /**
@@ -102,7 +102,7 @@ class AssurenceController extends Controller
     {
         $assurence=Assurence::find($id);
         $assurence->delete();
-        return redirect(route('assurence.index'));
+        return redirect()->route('assurence.index');
     }
     
    

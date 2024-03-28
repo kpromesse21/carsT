@@ -1,29 +1,29 @@
-<nav x-data="{ open: false }" class="bg-blue-600 border-b border-gray-100 text-white fixed w-full">
+<nav x-data="{ open: false }" class=" text-white fixed  w-full">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+    <div class="bg-slate-800 rounded-md max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-lg my-3">
+        <div class="flex justify-between h-12">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center bg-white w-[60px] h-[60px] rounded-full justify-center" >
+                <div class="shrink-0 flex items-center  w-[60px] h-12  justify-center" >
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-14 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-10 w-auto fill-current text-white" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center ">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Accueil') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
                     <x-nav-link :href="route('assurence')" :active="request()->routeIs('assurence')">
                         {{ __('Assurances') }}
                     </x-nav-link>
                 </div>
                 {{-- admin--}}
                 @if (Auth::user()->statut==1)
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
                     <x-nav-link :href="route('gestion.agent')" :active="request()->routeIs('gestion.agent')">
                         {{ __('Gestion agent') }}
                     </x-nav-link>
@@ -31,17 +31,17 @@
                 @endif
                 {{-- DGI --}}
                 @if (Auth::user()->statut==2)
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
                     <x-nav-link :href="route('register.car')" :active="request()->routeIs('register.car')">
                         {{ __('Gestion vehicules') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center">
                     <x-nav-link :href="route('assurence.index')" :active="request()->routeIs('assurence.index')">
                         {{ __('Gestion assurances') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
                     <x-nav-link :href="route('payement.index')" :active="request()->routeIs('payement.index')">
                         {{ __('Payement') }}
                     </x-nav-link>
@@ -49,10 +49,20 @@
                 @endif
 
                 {{-- PCR --}}
-                @if (Auth::user()->statut=3)
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                @if (Auth::user()->statut==3)
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
+                    <x-nav-link :href="route('contravention.index')" :active="request()->routeIs('contravention.index')">
+                        {{ __('gestion faute') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
                     <x-nav-link :href="route('contravention.index')" :active="request()->routeIs('contravention.index')">
                         {{ __('contraventions') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
+                    <x-nav-link :href="route('contravention.payement.index')" :active="request()->routeIs('contravention.payement.index')">
+                        {{ __('payements') }}
                     </x-nav-link>
                 </div>
                 @endif
@@ -160,5 +170,6 @@
             </div>
         </div>
     </div>
+
 </nav>
 <div class="h-[60px]"></div>

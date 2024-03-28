@@ -52,7 +52,8 @@ class Car extends Controller
     {   
         
         $car=Cars::find($id);
-        $contraventions=Contraventions::where('car_id',$id)->get();
+        // $contraventions=Contraventions::where('car_id',$car->id)->where('solve',false)->get();
+        $contraventions=Contraventions::where('car_id',$id)->where('solve',false)->get();
         // dd($car);
         if ($car->user_id == Auth::user()->id) {
             return view('carOne',['car'=>$car,'contraventions'=>$contraventions]);

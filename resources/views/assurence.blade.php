@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl  leading-tight">
             {{ __('assurence') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto  lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="">
+            <div class="panel">
                 <div class=" p-6 text-gray-900">
                     {{--  --}}
                     <h1 class="text-xl" style="text-align: center">Liste des assurences</h1>
@@ -27,7 +27,7 @@
                         </form>
                         <div class=" items-center">
                               @forelse ($assurences as $item)
-                    <div class="card">
+                    <div class="card mx-auto w-[50%]">
                         Nom: {{ $item->name }} <br>
                         <b><u class="text-sky-700">Description</u></b> : <p>
                             {{ App\Http\Controllers\Assurences::extrait($item->description) }}... <u class="text-sky-900"><a href="{{route('assurence.show',["assurence"=>$item->id])}}">plus des détails</a></u></p> <br>

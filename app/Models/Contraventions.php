@@ -12,5 +12,6 @@ class Contraventions extends Model
         'motif',
         'montant',
         'car_id',
+        'solve'
     ];
 }

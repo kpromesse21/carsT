@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight ">
             {{ __('Accueil') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="py-3">
+        <div class=" ">
+            <div class=" panel">
                 <div class="flex p-6 text-gray-900">
                     {{-- {{ __("You're logged in!") }} --}}
                     <form action="{{ route('vehicule.search') }}" method="POST" class="flex mx-auto w-80">
@@ -29,7 +29,7 @@
                     @endif
                     @if(isset($cars))
                     @forelse ($cars as $item)
-                        <div class="card">
+                        <div class="card mx-auto">
                             <h2>matricule : {{ $item->matricule }}</h2>
                             <hr>
                             <strong>categorie : {{ $item->categorie }}</strong><br>
@@ -60,7 +60,7 @@
                         @endif
 
                     
-                    @if (isset($assurences) && $assurences->count() <= 0 && isset($cars) && $cars->count() <= 0)
+                    @if (!isset($assurences) || $assurences->count() <= 0 && !isset($cars) || $cars->count() <= 0)
                     <h1 class="text-xl text-red-900 mx-auto bg-red-100" style="text-align: center">| Aucun resultat  n'a été trouver |</h1>
                     @endif
                     
