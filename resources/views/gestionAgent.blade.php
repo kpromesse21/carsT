@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div class="panel">
+        <div class=" ">
+            <div class="card">
                 <div class="flex p-6 text-gray-900">
                     {{-- {{ __("You're logged in!") }} --}}
                     <form class="flex mx-auto" action="{{ route('gestion.agent.search') }}" method="POST">
@@ -19,8 +19,6 @@
                             {{ __('search') }}
                             </x-primary-button>
                     </form>
-
-
                 </div>
                 @if (isset($log))
                     <div id="log"
@@ -28,23 +26,20 @@
                         style="text-align: center; display:block">{{ $log }}</div>
                     <script>
                         var logPanel = document.getElementById('log');
-                        // var errgPanel=document.getElementById('err');
-                        //console.log(logPanel);
                         var i = 5;
 
                         function f() {
-                            //console.log("fait")
                             t = setTimeout("f()", 1000);
                             if (i > 0) {
                                 i--;
                             }
                             if (i <= 0) {
-                                //console.log('fait')
+                             
                                 logPanel.style.display = "none";
-                                //errgPanel.style.display="none";
+                             
                                 clearTimeout(t);
                             }
-                            //  console.log(i)
+                          
                         }
                     </script>
                 @endif

@@ -10,7 +10,7 @@
             <div class="panel grid md:grid-cols-6 gap-5">
                 <div class="card col-span-3 ">
                     <div class="p-6 text-gray-900">
-                        <h2 class="mx-auto">Fomulaire d'ajout de vehicule</h2><br>
+                        <h2 class="mx-auto text-white">Fomulaire d'ajout de vehicule</h2><br>
                         
 
                         <form action="{{ route('register.confirm') }}" method="post"class="mx-auto">

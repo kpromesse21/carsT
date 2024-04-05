@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContraventionController;
+use App\Http\Controllers\Fautecontroller;
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\ProfileController;
 
@@ -74,6 +75,13 @@ Route::middleware('auth')->group(function () {
         Route::post('payement-contravention-select/',[PayementController::class,"payement_contravention_select"])->name('contravention.payement.select');
         Route::get('payement-contravention-list/{car}',[PayementController::class,"payement_contravention_list"])->name('contravention.payement.list');
         Route::post('payement-contravention-payer/',[PayementController::class,"payement_contravention_payer"])->name('contravention.payement.payer');
+        Route::get('Faute-Gestion/',[Fautecontroller::class,'index'])->name('faute.index');
+        Route::get('Faute-Gestion-creation/',[Fautecontroller::class,'create'])->name('faute.create');
+        Route::post('Faute-Gestion-store/',[Fautecontroller::class,'store'])->name('faute.store');
+        Route::get('Faute-Gestion-detail/{faute}',[Fautecontroller::class,'show'])->name('faute.show');
+        Route::get('Faute-Gestion-editer/{faute}',[Fautecontroller::class,'edit'])->name('faute.edit');
+        Route::post('Faute-Gestion-update/',[Fautecontroller::class,'update'])->name('faute.update');
+
     });
 
     // Route::resource('/contravention','App\Http\Controllers\ContraventionController');

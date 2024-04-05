@@ -13,7 +13,11 @@
         Categorie: {{$car->categorie}} <br>
         Date d'enregistrement: {{$car->created_at->format('d-m-Y')}} <br>
         mark:{{$car->mark}} <br>
-        <a href="{{route('car.edit',$car->id)}}" class="btn">editer</a>
+        <a href="{{route('car.edit',$car->id)}}" class="btn-edit btn">editer ✏</a>
+        {{-- <a href="{{route('car.edit',$car->id)}}" class="btn-danger btn">danger ❗</a> --}}
+        {{-- <a href="{{route('car.edit',$car->id)}}" class="btn-show btn">show</a>
+        <a href="{{route('car.edit',$car->id)}}" class="btn-primary btn">primary</a>
+        <a href="{{route('car.edit',$car->id)}}" class="btn-default btn">default</a> --}}
         @forelse ($car->payements as $item) 
         <hr>
         <?php $assurence=App\Models\Assurence::find($item->assurences_id)?>

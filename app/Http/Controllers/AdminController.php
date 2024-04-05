@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     //
     public function gestionAgent(){
-        $users=User::where('statut','!=',1)->get();
+        $users=User::where('statut','!=',1)->where('statut','!=',4)->get();
         return view('gestionAgent',compact('users'));
     }
     public function gestionAgentSearch(Request $request){

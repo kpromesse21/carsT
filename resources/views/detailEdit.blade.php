@@ -18,7 +18,7 @@
             <x-input-label for="description" class="block mt-1 w-full">description</x-input-label>
             <textarea class=" input-text" name="description">{{$assurence->description}}
             </textarea>
-            <button type="submit" class="btn-save">enregistrer</button>
+            <button type="submit" class="btn-primary btn">enregistrer</button>
         </form>
     </div>
     </div>

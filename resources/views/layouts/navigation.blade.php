@@ -51,7 +51,7 @@
                 {{-- PCR --}}
                 @if (Auth::user()->statut==3)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex flex items-center justify-center">
-                    <x-nav-link :href="route('contravention.index')" :active="request()->routeIs('contravention.index')">
+                    <x-nav-link :href="route('faute.index')" :active="request()->routeIs('faute.index')">
                         {{ __('gestion faute') }}
                     </x-nav-link>
                 </div>

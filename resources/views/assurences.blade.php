@@ -18,7 +18,7 @@
                 <textarea class="input-text " name="description">
 
                 </textarea>
-                <button type="submit" class="btn-save">enregistrer</button>
+                <button type="submit" class="btn-save btn">enregistrer</button>
             </form>
         </div>
         <div class="card  col-span-3">
@@ -35,7 +35,7 @@
                 <tr>
                     <td>{{$item->name}}</td>
                     <td>{{$item->price}} CDF</td>
-                    <td><a class="link" href="{{route('assurence.show',['assurence'=>$item->id])}}">detail</a></td>
+                    <td><a class=" link" href="{{route('assurence.show',['assurence'=>$item->id])}}">detail 👁‍🗨</a></td>
                 </tr>
                 @endforeach
             </table></div>

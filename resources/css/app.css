@@ -35,8 +35,44 @@
    
 }
 @layer components{
+
+    /* button section */
+    .btn-edit{
+        @apply bg-blue-900 text-white px-4 py-1 block w-fit rounded-md ;
+    }
+    .btn-submit{
+        @apply bg-slate-900 text-white px-4 py-1 block w-fit rounded-md 
+    }
+    .btn-danger{
+        @apply bg-orange-900 text-white px-4 py-1 block w-fit rounded-md
+    }
+    .btn-show{
+        @apply border text-white px-4 py-1 block w-fit rounded-md
+    }
+    .btn-primary{
+        @apply bg-slate-900 text-white px-4 py-1 block w-fit rounded-md
+    }
+    .btn-default{
+        @apply bg-slate-400 text-black px-4 py-1 block w-fit rounded-md
+    }
+    .btn{
+        @apply shadow-lg
+    }
+    .btn:hover{
+        @apply bg-opacity-50 scale-x-105
+    }
+
+    /* end button section */
+
+
+    /* widget */
+.widget{
+    @apply rounded-xl overflow-hidden;
+    background: #1f567c;
+}
+    /* end widget */
     .input-text{
-        @apply bg-slate-800 text-slate-300 shadow-md rounded-md placeholder:text-slate-400 w-full border-none
+        @apply bg-slate-800 text-slate-300 shadow-md rounded-md placeholder:text-slate-400 w-full border-none ;
     }
     label{
         @apply text-slate-400 font-bold
@@ -101,9 +137,9 @@
     .btn-save:active{
         @apply bg-slate-700 
     }
-    .btn-edit{
+    /* .btn-edit{
         @apply bg-blue-600 text-center text-white rounded py-2 px-1 w-28 mt-4
-    }
+    } */
     .btn-search{
         @apply bg-blue-600 text-center text-white rounded-xl py-2 px-1 w-28
     }
@@ -121,12 +157,12 @@
     .detail{
         @apply text-justify mb-3
     }
-    .btn-danger{
+    /* .btn-danger{
         @apply bg-red-600 text-center text-white rounded py-2 px-1 w-28 mt-4 hover:bg-red-500
     }
     .btn-more{
         @apply border-sky-800 text-sky-800 border-[1px] rounded px-2;
-    }
+    } */
     .input-select{
         @apply block w-full rounded border-gray-500 hover:border-sky-600;
     }

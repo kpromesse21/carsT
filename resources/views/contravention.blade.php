@@ -22,7 +22,7 @@
                     required />
                 {{-- <x-text-input class="block mt-1 w-full" type="number" name="mail" placeholder="ex: 6/10" required /> --}}
                 <label for="">Motif de la contravention</label>
-                <select name="motif" id="" class="input-select">
+                <select name="motif" id="" class="input-text">
                     <option value="0">mauvais parking</option>
                     <option value="1">mauvaise conduite</option>
                     <option value="2">griller un feu rouge</option>
