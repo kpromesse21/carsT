@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cars;
-use App\Models\Contraventions;
+use App\Models\Faute;
 use Illuminate\Http\Request;
 
 use function Termwind\render;
+use App\Models\Contraventions;
 
 class ContraventionController extends Controller
 {
@@ -17,7 +18,8 @@ class ContraventionController extends Controller
      */
     public function index()
     {
-        return view('contravention');
+        $fautes=Faute::all();
+        return view('contravention',['fautes'=>$fautes]);
     }
 
     /**
@@ -38,25 +40,18 @@ class ContraventionController extends Controller
      */
     public function store(Request $request)
     {
-        $fautes=[
-            '0'=>[10000,'mauvais parking'],
-            '1'=>[20000,'mauvaise conduite'],
-            '2'=>[10500,'griller un feu rouge'],
-            '3'=>[25000,"pas d'assurence"],
-            '4'=>[30000,"causer un accident"],
-            '5'=>[17000,"manque de document"],
-            '6'=>[21000,"contraventions impayer"],
-        ];
+        $faute=Faute::find($request->motif);
+        $fautes=Faute::all();
         $contravention=new Contraventions();
         $car=Cars::where('matricule',$request->plaque_num)->get();
         if($car->count()<1){
-            return view('contravention',["alert"=>"ce matricule n'exste pas dans le system"]);
+            return view('contravention',["alert"=>"ce matricule n'exste pas dans le system",'fautes'=>$fautes]);
         }else{
-             $contravention->motif=$request->motif;
+             $contravention->motif=$faute->motif;
              $contravention->car_id=$car[0]->id;
-             $contravention->montant=$fautes[$request->motif][0];
+             $contravention->montant=$faute->montant;
              $contravention->save();
-        return view('contravention',['alert'=>"contravention enregistrer avec success"]);
+        return view('contravention',['alert'=>"contravention enregistrer avec success",'fautes'=>$fautes]);
         }
     }
 
@@ -69,7 +64,8 @@ class ContraventionController extends Controller
     public function show($id)
     {
         $car=Cars::find($id);
-        return view('contravention',compact('car'));
+        $fautes=Faute::all();
+        return view('contravention',['car'=>$car,"fautes"=>$fautes]);
     }
 
     /**

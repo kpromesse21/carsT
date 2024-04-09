@@ -33,8 +33,16 @@
         @apply bg-slate-800 rounded-full
     }
    
+   
 }
 @layer components{
+
+    .custom-scroll::-webkit-scrollbar {
+        width: 5px; /* Adjust scrollbar width */
+    }
+    .custom-scroll::-webkit-scrollbar-track{
+        @apply bg-slate-900 /* Set track color */
+    }
 
     /* button section */
     .btn-edit{

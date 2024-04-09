@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="panel">
             <div class="card mx-auto">
-                <h1>Edition d'une faute</h1>
+                <h1>Edition d'une infraction</h1>
                 @isset($alert)
                     <div class="alert-success">{{ $alert }}</div>
                 @endisset
@@ -21,7 +21,7 @@
                     <x-text-input class="block mt-1 w-full" type="text" value="{{$faute->motif}}" name="motif" placeholder="lorem ipsum dolor rem .."
                         required />
                     <label>
-                       montant
+                       montant (CDF)
                     </label>
                     <x-text-input class="block mt-1 w-full" type="number" value="{{$faute->montant}}" name="montant" placeholder=""
                         required />

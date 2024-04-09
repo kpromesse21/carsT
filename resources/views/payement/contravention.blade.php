@@ -35,8 +35,8 @@
                             <tr>
                                 <td>{{ $item->matricule }}</td>
                                 <td>{{ $item->mark }}</td>
-                                <td>{{ 'proprietaire' }}</td>
-                                <td>{{ App\Models\Contraventions::where('car_id', $item->id)->get()->count() }}</td>
+                                <td>{{ App\Models\User::find($item->user_id)->name }}</td>
+                                <td>{{ App\Models\Contraventions::where('car_id', $item->id)->where('solve',false)->get()->count() }}</td>
                                 <td>
                                     <a href="{{ route('contravention.payement.list', ['car' => $item->id]) }}">payer</a>
                                     {{-- <form action="{{route("contravention.payement.payer")}}" method="post">@csrf <input type="hidden" name="id" value="{{$item->id}}"> <button type="submit">Payer</button></form>  --}}

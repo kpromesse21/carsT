@@ -20,13 +20,13 @@
                    <table class=" table">
                 <thead>
                     <th>Motif</th>
-                    <th>Motant</th>
+                    <th>Motant (CDF)</th>
                     <th>Date</th>
                     <th>Action</th>
                 </thead>
                 @foreach ($contraventions as $item)
                     <tr>
-                     <td>{{$item->motif}}</td>
+                     <td class=" text-left justify-start">{{$item->motif}}</td>
                      <td>{{$item->montant}}</td>
                      <td>{{$item->created_at->format('d-m-Y')}}</td>
                      <td><form action="{{route('contravention.payement.payer')}}" method="post">@csrf <input type="hidden" name="id" value="{{$item->id}}"><button type="submit">Payer</button></form></td>

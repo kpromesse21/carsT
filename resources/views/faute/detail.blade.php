@@ -10,7 +10,7 @@
             <div class="card">
                 detail faute
                 <p>motif : {{$faute->motif}}</p>
-                <p>montant : {{$faute->montant}}</p>
+                <p>montant : {{$faute->montant}} CDF</p>
             </div>
         </div>
 
